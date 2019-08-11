@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello VideoController!{% endblock %}
+
+{% block body %}
+    <h1>Ajouter des videos</h1>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+
+    <br><br><br><br><br>
+    <h1>Liste des videos</h1>
+    <ul>
+        {% for video in videos %}
+            <li>name : {{ video.title }}</li>
+            <li>createdAt : {{ video.createdAt|date }}</li>
+            <li>Url : {{ video.Url }}</li>
+
+            {% if video.user %}
+                <li>firstname : {{ video.user.firstname }}</li>
+                <li>lastname : {{ video.user.lastname }}</li>
+                <li>email : {{ video.user.email }}</li>
+            {% else %}
+                <li>user : No user</li>
+            {% endif %}
+
+        {% endfor %}
+    </ul>
+{% endblock %}
